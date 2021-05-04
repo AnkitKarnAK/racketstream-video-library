@@ -9,7 +9,7 @@ export const VideoItem = ({ videoItem }) => {
         <img src={videoItem.image} alt={videoItem.title} />
         <div className="card-badge-bottom-right">{videoItem.duration}</div>
         <div className="card-badge-top-right">
-          <span class="tooltiptext">Watch Later</span>
+          <span className="tooltiptext">Watch Later</span>
           <AiOutlineFieldTime />
         </div>
       </div>
