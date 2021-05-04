@@ -13,9 +13,8 @@ const Profile = () => {
         <span className="profile-user-name">{username}</span>
       </div>
       <div className="profile-links">
-        <Link to="/videos">Videos</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/address">Address</Link>
+        <Link to="/playlists">Playlists</Link>
+        <Link to="/likes">Liked Videos</Link>
       </div>
       <div className="profile-logout-container">
         <button

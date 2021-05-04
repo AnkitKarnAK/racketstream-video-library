@@ -95,8 +95,8 @@ const Login = () => {
           </div>
         </form>
         {isLoading && (
-          <div className="loading-overlay">
-            <Loader type="ThreeDots" color="#2874f0" height={80} width={80} />
+          <div className="position-center">
+            <Loader type="ThreeDots" color="#2874f0" height={150} width={150} />
           </div>
         )}
       </div>

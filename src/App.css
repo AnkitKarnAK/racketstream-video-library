@@ -10,6 +10,12 @@ html,body{
 .primary-color{
     color: var(--primary-color);
 }
+.text-color-green{
+    color: var(--success-color);
+}
+.text-color-red{
+    color: var(--error-color);
+}
 
 .button-primary:hover{
     background-color: #2468d8;
@@ -18,6 +24,13 @@ html,body{
 .button-secondary:hover{
     background-color: #F9FAFB;
     color: var(--primary-color);
+}
+
+.position-center{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /** NAVBAR CSS Starts**/
@@ -336,11 +349,7 @@ button.button-disabled{
     text-decoration: underline;
 }
 
-.loading-overlay{
-    position: absolute;
-    top: 50%;
-    left: 40%;
-}
+
 
 /** LOGIN CSS Ends **/
 
@@ -427,9 +436,103 @@ button.button-disabled{
 /** NO ITEM PAGE, ERROR PAGE Ends **/
 
 
+/** VIDEOS CSS Starts **/
+
+.videos-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   
+}
+
+.card-container-horizontal{
+    max-width: 100%;
+    height: 15rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    border: 1px solid #f0f0f0;
+    width: 100%;
+}
+.card-container-horizontal>.card-horizontal-image{
+    position: relative;
+    width: 20rem;
+}
+.card-badge-bottom-right {
+    position: absolute;
+    bottom: 7px;
+    right: 8px;
+    cursor: default;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    padding: 0px 8px;
+    border-radius: 2px;
+    height: 20px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+.card-badge-top-right {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 2.2rem;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.tooltiptext{
+    display: none;
+    font-size: 1.3rem;  
+}
+.card-badge-top-right:hover .tooltiptext{
+    display: inline;
+}
 
 
 
+.card-container-horizontal>.card-body-horizontal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1rem;
+    
+}
+
+.card-body-horizontal .video-title{
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+}
+
+.card-container-horizontal>.card-body-horizontal>.cart-buttons .remove-cart-button{
+    margin:  0;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.cart-buttons{
+   display: flex;
+   width: 100%;
+}
+.cart-buttons .cart-icon-button{
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+
+/** VIDEOS CSS Ends **/
 
 
 
@@ -446,9 +549,13 @@ button.button-disabled{
         display: none;
     }
 
-    .loading-overlay{
-        position: absolute;
-        top: 63%;
-        left: 47%;
+    .card-container-horizontal>.card-horizontal-image{
+        position: relative;
+        width: 40rem;
+    }
+
+    .tooltiptext{
+        display: none;
+        font-size: 1.7rem;  
     }
 }
