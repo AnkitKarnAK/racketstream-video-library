@@ -1,4 +1,4 @@
-import { FaRegThumbsUp, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
 import { RiPlayListLine } from "react-icons/ri";
 import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
