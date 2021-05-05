@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegThumbsUp, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export const VideoItem = ({ videoItem }) => {
   return (

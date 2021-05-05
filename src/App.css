@@ -10,6 +10,13 @@ html,body{
 .primary-color{
     color: var(--primary-color);
 }
+.primary-color:visited{
+    color: var(--primary-color);
+}
+.secondary-color{
+    color: var(--secondary-color);
+}
+
 .text-color-green{
     color: var(--success-color);
 }
@@ -309,6 +316,73 @@ button.button-disabled{
 /** NAVBAR CSS Ends **/
 
 
+/** SIDEBAR CSS Starts **/
+
+.sidebar-nav {
+    display: none;
+    position: fixed;
+    top: 5rem;
+    width: 16%;
+    height: 100vh;
+    border-right: 1px solid var(--primary-color);
+  }
+
+  .links-container {
+    padding: 1rem;
+    padding-right: 0;
+    list-style: none;
+  }
+
+  .links-container li {
+    margin: 2rem 1rem;
+  }
+  .links-container li>svg{
+      height: 2rem;
+      width: 2rem;
+  }
+
+  .link-name {
+    padding-left: 1rem;
+    position: relative;
+    bottom: 5px;
+    font-size: 1.2rem;
+  }
+
+/** SIDEBAR CSS Ends **/
+
+
+/** FOOTER FOR MOBILE SCREENS Starts **/
+
+.footer-nav {
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 1rem 1rem 0rem 1rem;
+    background-color: var(--light-color);
+    border-top: 1px solid #fafafa;
+  }
+  
+  .footer--item {
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .footer--item>p{
+      margin: 0;
+      padding-bottom: 0.2rem;
+  }
+  .footer--item>svg{
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+/** FOOTER FOR MOBILE SCREENS Ends **/
+
+
+
 /** LOGIN CSS Starts **/
 
 .login-container{
@@ -546,6 +620,14 @@ button.button-disabled{
         display: none;
     }
     #menuToggle{
+        display: none;
+    }
+
+    .sidebar-nav{
+        display: block;
+    }
+
+    .footer-nav{
         display: none;
     }
 

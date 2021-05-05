@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { Navbar } from "./components/Navbar";
+import { Sidebar } from "./components/Sidebar";
+import { FooterForMobileScreens } from "./components/FooterForMobileScreens";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { useDataContext } from "./context/data-context";
 import { getVideosFromServer } from "./api/api-requests";
@@ -32,6 +34,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Sidebar />
+      <FooterForMobileScreens />
       <Routes>
         <Route path="/videos" element={<Videos />} />
         <Route path="/login" element={<Login />} />
