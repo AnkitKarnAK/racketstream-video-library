@@ -13,6 +13,7 @@ import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Videos from "./components/pages/Videos";
+import VideoItem from "./components/pages/Video";
 
 function App() {
   const { dispatch } = useDataContext();
@@ -38,6 +39,7 @@ function App() {
       <FooterForMobileScreens />
       <Routes>
         <Route path="/videos" element={<Videos />} />
+        <Route path="/videos/:videoId" element={<VideoItem />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
 

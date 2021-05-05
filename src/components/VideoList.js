@@ -7,8 +7,11 @@ export const VideoItem = ({ videoItem }) => {
   return (
     <div className="card-container-horizontal">
       <div className="card-horizontal-image">
-        <img src={videoItem.image} alt={videoItem.title} />
-        <div className="card-badge-bottom-right">{videoItem.duration}</div>
+        <Link to={`/videos/${videoItem.videoId}`}>
+          <img src={videoItem.image} alt={videoItem.title} />
+
+          <div className="card-badge-bottom-right">{videoItem.duration}</div>
+        </Link>
         <div className="card-badge-top-right">
           <span className="tooltiptext">Watch Later</span>
           <AiOutlineFieldTime />
@@ -16,7 +19,9 @@ export const VideoItem = ({ videoItem }) => {
       </div>
 
       <div className="card-body-horizontal">
-        <div className="h3 video-title">{videoItem.title}</div>
+        <Link to={`/videos/${videoItem.videoId}`}>
+          <div className="h3 video-title">{videoItem.title}</div>
+        </Link>
         <div className="card-content-horizontal">
           <div>
             <span className="text-color-green">
