@@ -8,12 +8,19 @@ const Playlist = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const {
+    state,
     state: { playlists },
-    dispatch,
   } = useDataContext();
 
   const { playlistId } = useParams();
   const playlist = playlists.find((item) => item.playlistId === playlistId);
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (state.playlists[0].videos.length) {
+      setIsLoading(false);
+    }
+  }, [state.playlists]);
 
   return (
     <>
@@ -24,21 +31,6 @@ const Playlist = () => {
       ) : (
         <>
           <div className="playlisted-videos-conatiner">
-            <div className="playlist-details">
-              <div className="playlist-title">
-                <strong>{playlist.name}</strong>
-              </div>
-              {playlist.videos.length > 0 ? (
-                <div className="playlist-video-count info__grey">
-                  <small>
-                    {playlist.videos.length}{" "}
-                    {playlist.videos.length > 1 ? "videos" : "video"}
-                  </small>
-                </div>
-              ) : (
-                <div>There are no videos in this playlist yet.</div>
-              )}
-            </div>
             <div className="playlist-bar">
               <div className="playlist-title">
                 <strong>{playlist.name}</strong>
