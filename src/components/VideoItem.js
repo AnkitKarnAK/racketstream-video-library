@@ -6,11 +6,19 @@ import { Link } from "react-router-dom";
 import { useDataContext } from "../context/data-context";
 import { checkStatus } from "../context/data-reducer";
 
-export const VideoItem = ({ videoItem }) => {
+export const VideoItem = ({ videoItem, onOptionClick }) => {
   const {
     state: { likedVideos, watchLater },
     dispatch,
   } = useDataContext();
+
+  const handleShowModal = () => {
+    if (typeof onOptionClick === "function")
+      onOptionClick({
+        videoItem,
+        onOptionClick,
+      });
+  };
 
   return (
     <div className="card-container-horizontal">
@@ -76,7 +84,9 @@ export const VideoItem = ({ videoItem }) => {
               <FaRegThumbsUp />
             )}
           </div>
-          <button className="button-primary">Add to Playlist</button>
+          <button className="button-primary" onClick={handleShowModal}>
+            Add to Playlist
+          </button>
         </div>
       </div>
     </div>

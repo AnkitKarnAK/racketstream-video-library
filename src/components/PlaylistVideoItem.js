@@ -7,39 +7,35 @@ import { Link } from "react-router-dom";
 import { useDataContext } from "../context/data-context";
 import { checkStatus } from "../context/data-reducer";
 
-export const LikedItem = ({ likedItem, onOptionClick }) => {
+export const PlaylistVideoItem = ({ playlistVideoItem }) => {
   const {
     state: { likedVideos, watchLater },
     dispatch,
   } = useDataContext();
-
-  const handleShowModal = () => {
-    if (typeof onOptionClick === "function")
-      onOptionClick({
-        videoItem: { likedItem },
-        onOptionClick,
-      });
-  };
-
   return (
     <div className="card-container-horizontal">
       <div className="card-horizontal-image">
-        <Link to={`/videos/${likedItem.videoId}`}>
-          <img src={likedItem.image} alt={likedItem.title} />
+        <Link to={`/videos/${playlistVideoItem.videoId}`}>
+          <img src={playlistVideoItem.image} alt={playlistVideoItem.title} />
 
-          <div className="card-badge-bottom-right">{likedItem.duration}</div>
+          <div className="card-badge-bottom-right">
+            {playlistVideoItem.duration}
+          </div>
         </Link>
         <div
           className={
-            checkStatus(watchLater, likedItem._id)
+            checkStatus(watchLater, playlistVideoItem._id)
               ? "card-badge-top-right in-watch-later"
               : "card-badge-top-right"
           }
           onClick={() => {
-            dispatch({ type: "TOGGLE_WATCH_LATER", payload: likedItem });
+            dispatch({
+              type: "TOGGLE_WATCH_LATER",
+              payload: playlistVideoItem,
+            });
           }}
         >
-          {checkStatus(watchLater, likedItem._id) ? (
+          {checkStatus(watchLater, playlistVideoItem._id) ? (
             <>
               <AiOutlineFieldTime />
             </>
@@ -53,16 +49,20 @@ export const LikedItem = ({ likedItem, onOptionClick }) => {
       </div>
 
       <div className="card-body-horizontal">
-        <Link to={`/videos/${likedItem.videoId}`}>
-          <div className="h3 video-title">{likedItem.title}</div>
+        <Link to={`/videos/${playlistVideoItem.videoId}`}>
+          <div className="h3 video-title">{playlistVideoItem.title}</div>
         </Link>
         <div className="card-content-horizontal">
           <div>
-            <span className="card-content-title">{likedItem.channelName}</span>
-            <div> Subscibers: {likedItem.channelSubscribers}</div>
+            <span className="card-content-title">
+              {playlistVideoItem.channelName}
+            </span>
+            <div> Subscibers: {playlistVideoItem.channelSubscribers}</div>
             <div>
               Views:{" "}
-              <span style={{ color: "#878787" }}>{likedItem.viewCount}</span>
+              <span style={{ color: "#878787" }}>
+                {playlistVideoItem.viewCount}
+              </span>
             </div>
           </div>
         </div>
@@ -70,18 +70,15 @@ export const LikedItem = ({ likedItem, onOptionClick }) => {
           <div
             className="cart-icon-button"
             onClick={() => {
-              dispatch({ type: "TOGGLE_LIKE", payload: likedItem });
+              dispatch({ type: "TOGGLE_LIKE", payload: playlistVideoItem });
             }}
           >
-            {checkStatus(likedVideos, likedItem._id) ? (
+            {checkStatus(likedVideos, playlistVideoItem._id) ? (
               <FaThumbsUp />
             ) : (
               <FaRegThumbsUp />
             )}
           </div>
-          <button className="button-primary" onClick={handleShowModal}>
-            Add to Playlist
-          </button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useDataContext } from "../../context/data-context";
-import { VideoItem } from "../VideoItem";
+import { PlaylistVideoItem } from "../PlaylistVideoItem";
 import Loader from "react-loader-spinner";
 
 const Playlist = () => {
@@ -46,7 +46,10 @@ const Playlist = () => {
             </div>
 
             {playlist.videos.map((videoItem) => (
-              <VideoItem key={videoItem.videoId} videoItem={videoItem} />
+              <PlaylistVideoItem
+                key={videoItem.videoId}
+                playlistVideoItem={videoItem}
+              />
             ))}
           </div>
         </>
