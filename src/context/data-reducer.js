@@ -62,7 +62,7 @@ export const dataReducer = (state, { type, payload }) => {
     }
 
     case "ADD_TO_PLAYLIST": {
-      return state.map((playlist) => {
+      return state.playlists.map((playlist) => {
         if (playlist.playlistId === payload.playlistId) {
           if (
             playlist.videos.some((item) => item.videoId === payload.videoId)

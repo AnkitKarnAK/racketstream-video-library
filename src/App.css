@@ -817,7 +817,7 @@ button.button-disabled{
         display: none;
     }
 
-    .videos-container, .liked-container, .watch-later-container, .playlists--container{
+    .videos-container, .liked-container, .watch-later-container, .playlists--container, .playlisted-videos-conatiner{
         margin: 0rem 2.5rem 0rem 16rem;
     }
     .card-container-horizontal>.card-horizontal-image{

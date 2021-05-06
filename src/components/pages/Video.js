@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import { getVideoFromServer } from "../../api/api-requests";
 
-const VideoItem = () => {
+const Video = () => {
   const [video, setVideo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { videoId } = useParams();
@@ -75,4 +75,4 @@ const VideoItem = () => {
     </>
   );
 };
-export default VideoItem;
+export default Video;

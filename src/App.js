@@ -13,10 +13,11 @@ import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Videos from "./components/pages/Videos";
-import VideoItem from "./components/pages/Video";
+import Video from "./components/pages/Video";
 import Liked from "./components/pages/Liked";
 import WatchLater from "./components/pages/WatchLater";
 import PlayLists from "./components/pages/Playlists";
+import PlayList from "./components/pages/Playlist";
 
 function App() {
   const { dispatch } = useDataContext();
@@ -43,10 +44,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Videos />} />
         <Route path="/videos" element={<Videos />} />
-        <Route path="/videos/:videoId" element={<VideoItem />} />
+        <Route path="/videos/:videoId" element={<Video />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/watch-later" element={<WatchLater />} />
         <Route path="/playlists" element={<PlayLists />} />
+        <Route path="/playlists/:playlistId" element={<PlayList />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
 
