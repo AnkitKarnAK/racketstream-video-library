@@ -16,28 +16,6 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, watchLater: payload };
     }
 
-    case "ADD_NEW_PLAYLIST": {
-      return { ...state, playlists: state.playlists.concat(payload) };
-    }
-
-    case "UPDATE_PLAYLIST": {
-      return {
-        ...state,
-        playlists: state.playlists.map((item) =>
-          item._id !== payload._id ? item : payload
-        ),
-      };
-    }
-
-    case "DELETE_PLAYLIST": {
-      return {
-        ...state,
-        playlists: state.playlists.filter(
-          (playlist) => playlist._id !== payload
-        ),
-      };
-    }
-
     case "TOGGLE_LIKE": {
       return isAlreadyAdded(state.likedVideos, payload._id)
         ? {
@@ -66,6 +44,58 @@ export const dataReducer = (state, { type, payload }) => {
               status: { exists: true },
             }),
           };
+    }
+
+    case "CREATE_PLAYLIST": {
+      return {
+        ...state,
+        playlists: state.playlists.concat(payload),
+      };
+    }
+    case "DELETE_PLAYLIST": {
+      return {
+        ...state,
+        playlists: state.playlists.filter(
+          (playlist) => playlist.playlistId !== payload.playlistId
+        ),
+      };
+    }
+
+    case "ADD_TO_PLAYLIST": {
+      return state.map((playlist) => {
+        if (playlist.playlistId === payload.playlistId) {
+          if (
+            playlist.videos.some((item) => item.videoId === payload.videoId)
+          ) {
+            const videos = playlist.videos.filter(
+              (item) => item.videoId !== payload.videoId
+            );
+            return { ...playlist, videos };
+          }
+          return {
+            ...playlist,
+            videos: [...playlist.videos, { ...payload }],
+          };
+        }
+        return playlist;
+      });
+    }
+
+    case "REMOVE_FROM_PLAYLIST": {
+      return state.map((playlist) => {
+        if (playlist.playlistId === payload.playlistId) {
+          if (
+            playlist.videos.some((item) => item.videoId === payload.videoId)
+          ) {
+            const videos = playlist.videos.filter(
+              (item) => item.videoId !== payload.videoId
+            );
+            return { ...playlist, videos };
+          }
+          return playlist;
+        }
+        return playlist;
+      });
     }
 
     default:

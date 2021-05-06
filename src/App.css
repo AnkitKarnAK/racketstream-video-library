@@ -750,6 +750,53 @@ button.button-disabled{
 /** LIKED VIDEO CSS Ends **/
 
 
+/** PLAYLISTS CSS Starts **/
+
+.playlists--container {
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    padding: 0 1rem;
+  }
+  
+  .playlists--title {
+    padding: 1rem 0;
+  }
+  
+  .playlists-empty {
+    padding: 0 1rem;
+  }
+
+/** PLAYLISTS CSS Ends **/
+
+/** PLAYLIST CSS Starts **/
+
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--dark-color);
+  }
+
+  .playlist-item .playlist-title{
+      color: var(--primary-color);
+      font-size: 1.5rem;
+  }
+  
+  .link__large {
+    width: 80%;
+  }
+  
+  .playlist-item .item--video-count {
+    color: var(--dark-color);
+  }
+  
+  .btn-delete-playlist {
+    cursor: pointer;
+  }
+
+/** PLAYLIST CSS Ends **/
+
 /* For tablets or smaller laptop screens */
 @media screen and (min-width: 480px) {
     .nav .display-toggle{
@@ -770,7 +817,7 @@ button.button-disabled{
         display: none;
     }
 
-    .videos-container, .liked-container, .watch-later-container{
+    .videos-container, .liked-container, .watch-later-container, .playlists--container{
         margin: 0rem 2.5rem 0rem 16rem;
     }
     .card-container-horizontal>.card-horizontal-image{
@@ -806,4 +853,17 @@ button.button-disabled{
     .card-content-title{
         font-size: 1.3rem;
     }
+     
+    .playlists--title {
+        font-size: 1.5rem;
+      }
+
+      .playlist-item {
+        width: 80%;
+        margin: auto;
+      }
+    
+      .playlist-item:hover {
+        background-color: #eaf1fe;
+      }
 }

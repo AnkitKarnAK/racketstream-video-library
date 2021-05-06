@@ -32,7 +32,7 @@ export const FooterForMobileScreens = () => {
         </div>
       </NavLink>
       <NavLink
-        to="/playlist"
+        to="/playlists"
         className="secondary-color"
         activeClassName="primary-color"
       >

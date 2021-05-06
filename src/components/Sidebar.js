@@ -30,16 +30,6 @@ export const Sidebar = () => {
           </li>
         </NavLink>
         <NavLink
-          to="/playlists"
-          className="secondary-color"
-          activeClassName="primary-color"
-        >
-          <li>
-            <RiPlayListLine />
-            <span className="link-name">Playlists</span>
-          </li>
-        </NavLink>
-        <NavLink
           to="/watch-later"
           className="secondary-color"
           activeClassName="primary-color"
@@ -47,6 +37,16 @@ export const Sidebar = () => {
           <li>
             <AiOutlineFieldTime />
             <span className="link-name">Watch Later</span>
+          </li>
+        </NavLink>
+        <NavLink
+          to="/playlists"
+          className="secondary-color"
+          activeClassName="primary-color"
+        >
+          <li>
+            <RiPlayListLine />
+            <span className="link-name">Playlists</span>
           </li>
         </NavLink>
         <NavLink
