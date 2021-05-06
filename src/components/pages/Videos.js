@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDataContext } from "../../context/data-context";
-import { VideoItem } from "../VideoList";
+import { VideoItem } from "../VideoItem";
 import Loader from "react-loader-spinner";
 
 const Videos = () => {

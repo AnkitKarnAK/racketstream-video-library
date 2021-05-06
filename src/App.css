@@ -727,7 +727,17 @@ button.button-disabled{
 
 /** LIKED VIDEO CSS Starts **/
 
+.liked-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+   
+}
 
+.card-content-title{
+    font-size: 1rem;
+}
 
 /** LIKED VIDEO CSS Ends **/
 
@@ -752,7 +762,7 @@ button.button-disabled{
         display: none;
     }
 
-    .videos-container{
+    .videos-container, .liked-container{
         margin: 0rem 2.5rem 0rem 16rem;
     }
     .card-container-horizontal>.card-horizontal-image{
@@ -784,5 +794,8 @@ button.button-disabled{
     .tooltiptext{
         display: none;
         font-size: 1.7rem;  
+    }
+    .card-content-title{
+        font-size: 1.3rem;
     }
 }

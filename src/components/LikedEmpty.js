@@ -10,7 +10,7 @@ export function LikedEmpty() {
       </div>
       <div className="empty-content-head">No liked videos !! </div>
       <div className="empty-content-text">add your favourite videos </div>
-      <Link to="/products">
+      <Link to="/videos">
         <button className="button-primary">Watch Videos </button>
       </Link>
     </div>
