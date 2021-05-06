@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FaHome, FaThumbsUp } from "react-icons/fa";
 import { RiPlayListLine } from "react-icons/ri";
-import { AiOutlineFieldTime } from "react-icons/ai";
 import { MdVideoLibrary } from "react-icons/md";
 
 export const FooterForMobileScreens = () => {
@@ -44,18 +43,7 @@ export const FooterForMobileScreens = () => {
           </p>
         </div>
       </NavLink>
-      <NavLink
-        to="/watch-later"
-        className="secondary-color"
-        activeClassName="primary-color"
-      >
-        <div className="footer--item">
-          <AiOutlineFieldTime />
-          <p>
-            <small>Library</small>
-          </p>
-        </div>
-      </NavLink>
+
       <NavLink
         to="/library"
         className="secondary-color"

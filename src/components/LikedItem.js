@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FaRegThumbsUp, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaRegThumbsUp, FaThumbsUp } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDataContext } from "../context/data-context";
