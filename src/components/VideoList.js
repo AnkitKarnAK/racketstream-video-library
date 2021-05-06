@@ -2,8 +2,15 @@ import React from "react";
 import { FaRegThumbsUp, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useDataContext } from "../context/data-context";
+import { checkStatus } from "../context/data-reducer";
 
 export const VideoItem = ({ videoItem }) => {
+  const {
+    state: { likedVideos },
+    dispatch,
+  } = useDataContext();
+
   return (
     <div className="card-container-horizontal">
       <div className="card-horizontal-image">
@@ -39,8 +46,17 @@ export const VideoItem = ({ videoItem }) => {
           </div>
         </div>
         <div className="cart-buttons">
-          <div className="cart-icon-button">
-            <FaRegThumbsUp />
+          <div
+            className="cart-icon-button"
+            onClick={() => {
+              dispatch({ type: "TOGGLE_LIKE", payload: videoItem });
+            }}
+          >
+            {checkStatus(likedVideos, videoItem._id) ? (
+              <FaThumbsUp />
+            ) : (
+              <FaRegThumbsUp />
+            )}
           </div>
           <button className="button-primary">Add to Playlist</button>
         </div>

@@ -474,7 +474,7 @@ button.button-disabled{
 
 /** No ITEM PAGE, ERROR PAGE CSS Starts **/
 
-.no-item-container{
+.empty-container{
     width: 30rem;
     max-width: 100%;
     margin: 0 auto;
@@ -483,25 +483,25 @@ button.button-disabled{
     display: flex;
     flex-direction: column;
 }
-.no-item-image-container>img{
+.empty-image-container>img{
     width: 100%;
 }
 
-.no-item-container>.no-item-content-head{
+.empty-container>.empty-content-head{
     margin: 1rem auto;
     font-size: 2rem;
     color: #878787;
 }
-.no-item-container>.no-item-content-text{
+.empty-container>.empty-content-text{
     margin: 0 auto;
     font-size: 1.2rem;
 }
-.no-item-container>a{
+.empty-container>a{
     width: 100%;
     display: flex;
     justify-content: center;
 }
- .no-item-container button{
+ .empty-container button{
     font-size: 1rem;
     width: 10rem;
     margin: 1rem 0;
@@ -685,9 +685,51 @@ button.button-disabled{
    font-size: 1.2rem;
   }
   
-  
+/** EMPTY ITEM CSS Starts **/
+
+.no-item-container{
+    width: 30rem;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.no-item-image-container>img{
+    width: 100%;
+}
+
+.no-item-container>.no-item-content-head{
+    margin: 1rem auto;
+    font-size: 2rem;
+    color: #878787;
+}
+.no-item-container>.no-item-content-text{
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+.no-item-container>a{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+ .empty-container button{
+    font-size: 1rem;
+    width: 10rem;
+    margin: 1rem 0;
+}
+
+/** EMPTY ITEM CSS Ends **/
 
 /** VIDEO ITEM CSS Ends **/
+
+
+/** LIKED VIDEO CSS Starts **/
+
+
+
+/** LIKED VIDEO CSS Ends **/
 
 
 /* For tablets or smaller laptop screens */
@@ -738,7 +780,6 @@ button.button-disabled{
       .video-details {
         position: static;
       }
-    
 
     .tooltiptext{
         display: none;

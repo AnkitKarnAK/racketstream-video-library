@@ -38,7 +38,51 @@ export const dataReducer = (state, { type, payload }) => {
       };
     }
 
+    case "TOGGLE_LIKE": {
+      return isAlreadyAdded(state.likedVideos, payload._id)
+        ? {
+            ...state,
+            likedVideos: toggleStatus(state.likedVideos, payload._id),
+          }
+        : {
+            ...state,
+            likedVideos: addNewItem(state.likedVideos, {
+              ...payload,
+              status: { exists: true },
+            }),
+          };
+    }
+
     default:
       return state;
   }
+};
+
+export const isAlreadyAdded = (itemsArray, id) => {
+  for (let itemInArray of itemsArray) {
+    if (itemInArray._id === id) return true;
+  }
+  return false;
+};
+
+export const toggleStatus = (itemsArray, id) => {
+  return itemsArray.map((item) => {
+    if (item._id === id) {
+      return { ...item, status: { exists: !item.status.exists } };
+    } else {
+      return item;
+    }
+  });
+};
+
+export const addNewItem = (itemsArray, item) => [
+  ...itemsArray,
+  { ...item, quantity: 1 },
+];
+
+export const checkStatus = (itemsArray, id) => {
+  for (let itemInArray of itemsArray) {
+    if (itemInArray._id === id && itemInArray.status.exists) return true;
+  }
+  return false;
 };

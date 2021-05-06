@@ -9,8 +9,8 @@ export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(dataReducer, {
     playlists: [],
     videos: [],
-    watchLater: {},
-    likedVideos: {},
+    watchLater: [],
+    likedVideos: [],
   });
 
   return (

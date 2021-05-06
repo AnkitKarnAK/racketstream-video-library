@@ -28,7 +28,7 @@ const VideoItem = () => {
     return () => {
       setVideo({});
     };
-  }, []);
+  }, [videoId, navigate]);
 
   return (
     <>

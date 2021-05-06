@@ -14,6 +14,7 @@ import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Videos from "./components/pages/Videos";
 import VideoItem from "./components/pages/Video";
+import Liked from "./components/pages/Liked";
 
 function App() {
   const { dispatch } = useDataContext();
@@ -38,8 +39,10 @@ function App() {
       <Sidebar />
       <FooterForMobileScreens />
       <Routes>
+        <Route path="/" element={<Videos />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<VideoItem />} />
+        <Route path="/liked" element={<Liked />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
 
