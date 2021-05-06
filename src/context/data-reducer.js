@@ -47,9 +47,17 @@ export const dataReducer = (state, { type, payload }) => {
     }
 
     case "CREATE_PLAYLIST": {
+      payload.setInputPlayListName("");
       return {
         ...state,
-        playlists: state.playlists.concat(payload),
+        playlists: [
+          ...state.playlists,
+          {
+            playlistId: Math.random().toString(36).substring(7),
+            name: payload.inputPlayListName,
+            videos: [],
+          },
+        ],
       };
     }
     case "DELETE_PLAYLIST": {

@@ -813,10 +813,9 @@ button.button-disabled{
   }
   
   .modal {
-    top: 6rem;
-    bottom: 6rem;
-    left: 3rem;
-    right: 3rem;
+      position: fixed;
+    top: 10vh;
+    left: 10vw;
     
     z-index: 5;
     background-color: var(--light-color);

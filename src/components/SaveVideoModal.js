@@ -7,6 +7,7 @@ export const SaveVideoModal = ({ videoItem }) => {
   const [inputPlayListName, setInputPlayListName] = useState("");
   const {
     state: { playlists },
+    dispatch,
   } = useDataContext();
 
   return (
@@ -16,7 +17,6 @@ export const SaveVideoModal = ({ videoItem }) => {
       ></div>
       <div className={isModalVisible === "show" ? "modal show" : "hide"}>
         <div className="close-button-container">
-          <div className="modal--items">Save to Watch later</div>
           <div className="modal--items pb-0">
             <strong>Save to playlist</strong>
           </div>
@@ -35,6 +35,12 @@ export const SaveVideoModal = ({ videoItem }) => {
               <button
                 className="button-primary modal-button"
                 disabled={inputPlayListName === "" ? true : false}
+                onClick={() =>
+                  dispatch({
+                    type: "CREATE_PLAYLIST",
+                    payload: { inputPlayListName, setInputPlayListName },
+                  })
+                }
               >
                 Create
               </button>
@@ -46,6 +52,15 @@ export const SaveVideoModal = ({ videoItem }) => {
                 <label>
                   <input
                     type="checkbox"
+                    onChange={() =>
+                      dispatch({
+                        type: "ADD_TO_PLAYLIST",
+                        payload: {
+                          playlistId,
+                          videoItem,
+                        },
+                      })
+                    }
                     checked={videos.some(
                       (item) => item.videoId === videoItem.videoId
                     )}
