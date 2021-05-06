@@ -53,6 +53,21 @@ export const dataReducer = (state, { type, payload }) => {
           };
     }
 
+    case "TOGGLE_WATCH_LATER": {
+      return isAlreadyAdded(state.watchLater, payload._id)
+        ? {
+            ...state,
+            watchLater: toggleStatus(state.watchLater, payload._id),
+          }
+        : {
+            ...state,
+            watchLater: addNewItem(state.watchLater, {
+              ...payload,
+              status: { exists: true },
+            }),
+          };
+    }
+
     default:
       return state;
   }

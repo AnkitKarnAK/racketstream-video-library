@@ -15,6 +15,7 @@ import Profile from "./components/pages/Profile";
 import Videos from "./components/pages/Videos";
 import VideoItem from "./components/pages/Video";
 import Liked from "./components/pages/Liked";
+import WatchLater from "./components/pages/WatchLater";
 
 function App() {
   const { dispatch } = useDataContext();
@@ -43,6 +44,7 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<VideoItem />} />
         <Route path="/liked" element={<Liked />} />
+        <Route path="/watch-later" element={<WatchLater />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
 

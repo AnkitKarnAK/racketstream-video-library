@@ -1,13 +1,14 @@
 import React from "react";
 import { FaRegThumbsUp, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { BiTimeFive } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useDataContext } from "../context/data-context";
 import { checkStatus } from "../context/data-reducer";
 
 export const VideoItem = ({ videoItem }) => {
   const {
-    state: { likedVideos },
+    state: { likedVideos, watchLater },
     dispatch,
   } = useDataContext();
 
@@ -19,9 +20,26 @@ export const VideoItem = ({ videoItem }) => {
 
           <div className="card-badge-bottom-right">{videoItem.duration}</div>
         </Link>
-        <div className="card-badge-top-right">
-          <span className="tooltiptext">Watch Later</span>
-          <AiOutlineFieldTime />
+        <div
+          className={
+            checkStatus(watchLater, videoItem._id)
+              ? "card-badge-top-right in-watch-later"
+              : "card-badge-top-right"
+          }
+          onClick={() => {
+            dispatch({ type: "TOGGLE_WATCH_LATER", payload: videoItem });
+          }}
+        >
+          {checkStatus(watchLater, videoItem._id) ? (
+            <>
+              <AiOutlineFieldTime />
+            </>
+          ) : (
+            <>
+              <span className="tooltiptext">Watch Later</span>
+              <BiTimeFive />
+            </>
+          )}
         </div>
       </div>
 

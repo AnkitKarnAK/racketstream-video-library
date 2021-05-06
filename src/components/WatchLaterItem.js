@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useDataContext } from "../context/data-context";
 import { checkStatus } from "../context/data-reducer";
 
-export const LikedItem = ({ likedItem }) => {
+export const WatchLaterItem = ({ watchLaterItem }) => {
   const {
     state: { likedVideos, watchLater },
     dispatch,
@@ -15,22 +15,24 @@ export const LikedItem = ({ likedItem }) => {
   return (
     <div className="card-container-horizontal">
       <div className="card-horizontal-image">
-        <Link to={`/videos/${likedItem.videoId}`}>
-          <img src={likedItem.image} alt={likedItem.title} />
+        <Link to={`/videos/${watchLaterItem.videoId}`}>
+          <img src={watchLaterItem.image} alt={watchLaterItem.title} />
 
-          <div className="card-badge-bottom-right">{likedItem.duration}</div>
+          <div className="card-badge-bottom-right">
+            {watchLaterItem.duration}
+          </div>
         </Link>
         <div
           className={
-            checkStatus(watchLater, likedItem._id)
+            checkStatus(watchLater, watchLaterItem._id)
               ? "card-badge-top-right in-watch-later"
               : "card-badge-top-right"
           }
           onClick={() => {
-            dispatch({ type: "TOGGLE_WATCH_LATER", payload: likedItem });
+            dispatch({ type: "TOGGLE_WATCH_LATER", payload: watchLaterItem });
           }}
         >
-          {checkStatus(watchLater, likedItem._id) ? (
+          {checkStatus(watchLater, watchLaterItem._id) ? (
             <>
               <AiOutlineFieldTime />
             </>
@@ -44,16 +46,20 @@ export const LikedItem = ({ likedItem }) => {
       </div>
 
       <div className="card-body-horizontal">
-        <Link to={`/videos/${likedItem.videoId}`}>
-          <div className="h3 video-title">{likedItem.title}</div>
+        <Link to={`/videos/${watchLaterItem.videoId}`}>
+          <div className="h3 video-title">{watchLaterItem.title}</div>
         </Link>
         <div className="card-content-horizontal">
           <div>
-            <span className="card-content-title">{likedItem.channelName}</span>
-            <div> Subscibers: {likedItem.channelSubscribers}</div>
+            <span className="card-content-title">
+              {watchLaterItem.channelName}
+            </span>
+            <div> Subscibers: {watchLaterItem.channelSubscribers}</div>
             <div>
               Views:{" "}
-              <span style={{ color: "#878787" }}>{likedItem.viewCount}</span>
+              <span style={{ color: "#878787" }}>
+                {watchLaterItem.viewCount}
+              </span>
             </div>
           </div>
         </div>
@@ -61,10 +67,10 @@ export const LikedItem = ({ likedItem }) => {
           <div
             className="cart-icon-button"
             onClick={() => {
-              dispatch({ type: "TOGGLE_LIKE", payload: likedItem });
+              dispatch({ type: "TOGGLE_LIKE", payload: watchLaterItem });
             }}
           >
-            {checkStatus(likedVideos, likedItem._id) ? (
+            {checkStatus(likedVideos, watchLaterItem._id) ? (
               <FaThumbsUp />
             ) : (
               <FaRegThumbsUp />

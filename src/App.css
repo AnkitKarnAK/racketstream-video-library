@@ -560,6 +560,10 @@ button.button-disabled{
     background-color: var(--dark-color);
     color: var(--light-color);
 }
+.card-badge-top-right.in-watch-later{
+    background-color: transparent;
+    color: var(--error-color);
+}
 
 .tooltiptext{
     display: none;
@@ -684,6 +688,10 @@ button.button-disabled{
   .title {
    font-size: 1.2rem;
   }
+
+/** VIDEO ITEM CSS Ends **/
+
+
   
 /** EMPTY ITEM CSS Starts **/
 
@@ -722,12 +730,12 @@ button.button-disabled{
 
 /** EMPTY ITEM CSS Ends **/
 
-/** VIDEO ITEM CSS Ends **/
+
 
 
 /** LIKED VIDEO CSS Starts **/
 
-.liked-container{
+.liked-container, .watch-later-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -762,7 +770,7 @@ button.button-disabled{
         display: none;
     }
 
-    .videos-container, .liked-container{
+    .videos-container, .liked-container, .watch-later-container{
         margin: 0rem 2.5rem 0rem 16rem;
     }
     .card-container-horizontal>.card-horizontal-image{
