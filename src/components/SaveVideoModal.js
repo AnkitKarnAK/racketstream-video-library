@@ -9,7 +9,6 @@ export const SaveVideoModal = ({ videoItem }) => {
     state: { playlists },
     dispatch,
   } = useDataContext();
-  console.log("this is vid", videoItem);
 
   return (
     <>

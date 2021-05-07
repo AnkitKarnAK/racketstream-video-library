@@ -70,23 +70,28 @@ export const dataReducer = (state, { type, payload }) => {
     }
 
     case "ADD_TO_PLAYLIST": {
-      return state.playlists.map((playlist) => {
-        if (playlist.playlistId === payload.playlistId) {
-          if (
-            playlist.videos.some((item) => item.videoId === payload.videoId)
-          ) {
-            const videos = playlist.videos.filter(
-              (item) => item.videoId !== payload.videoId
-            );
-            return { ...playlist, videos };
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist) => {
+          if (playlist.playlistId === payload.playlistId) {
+            if (
+              playlist.videos.some(
+                (item) => item.videoId === payload.videoItem.videoId
+              )
+            ) {
+              const videos = playlist.videos.filter(
+                (item) => item.videoId !== payload.videoItem.videoId
+              );
+              return { ...playlist, videos };
+            }
+            return {
+              ...playlist,
+              videos: [...playlist.videos, { ...payload.videoItem }],
+            };
           }
-          return {
-            ...playlist,
-            videos: [...playlist.videos, { ...payload }],
-          };
-        }
-        return playlist;
-      });
+          return playlist;
+        }),
+      };
     }
 
     case "REMOVE_FROM_PLAYLIST": {
