@@ -9,13 +9,12 @@ export const SaveVideoModal = ({ videoItem }) => {
     state: { playlists },
     dispatch,
   } = useDataContext();
+  console.log("this is vid", videoItem);
 
   return (
     <>
-      <div
-        className={isModalVisible === "show" ? "modal-overlay show" : "hide"}
-      ></div>
-      <div className={isModalVisible === "show" ? "modal show" : "hide"}>
+      <div className={isModalVisible ? "modal-overlay show" : "hide"}></div>
+      <div className={isModalVisible ? "modal show" : "hide"}>
         <div className="close-button-container">
           <div className="modal--items pb-0">
             <strong>Save to playlist</strong>
@@ -72,7 +71,7 @@ export const SaveVideoModal = ({ videoItem }) => {
           </div>
 
           <div
-            onClick={() => setModalVisibility("hide")}
+            onClick={() => setModalVisibility(false)}
             className="modal--items modal-close"
           >
             Close

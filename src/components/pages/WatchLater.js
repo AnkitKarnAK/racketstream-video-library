@@ -20,7 +20,7 @@ const WatchLater = () => {
 
   const handleOptionClick = (videoObj) => {
     setModalData(videoObj);
-    setModalVisibility("show");
+    setModalVisibility(true);
   };
 
   return (

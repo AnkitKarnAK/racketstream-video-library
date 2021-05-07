@@ -11,7 +11,7 @@ const Videos = () => {
 
   const handleOptionClick = (videoObj) => {
     setModalData(videoObj);
-    setModalVisibility("show");
+    setModalVisibility(true);
   };
 
   const { state } = useDataContext();

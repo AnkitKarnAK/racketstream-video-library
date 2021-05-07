@@ -16,7 +16,7 @@ const Liked = () => {
 
   const handleOptionClick = (videoObj) => {
     setModalData(videoObj);
-    setModalVisibility("show");
+    setModalVisibility(true);
   };
 
   const likedActiveVideos = likedVideos.filter((video) =>

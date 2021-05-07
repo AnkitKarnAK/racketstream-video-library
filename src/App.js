@@ -34,7 +34,7 @@ function App() {
         console.error(err);
       }
     })();
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="App">
