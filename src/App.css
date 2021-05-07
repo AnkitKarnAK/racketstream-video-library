@@ -400,6 +400,9 @@ button.button-disabled{
     flex-direction: column;
     padding: 1rem;
 }
+.login-form .signup-email-input{
+    margin-top: 1rem;
+}
 .login-form .login-password-input{
     margin-top: 1rem;
 }
@@ -409,6 +412,9 @@ button.button-disabled{
 }
 .effect-1:focus:valid~.focus-border {
     background-color: var(--success-color);
+}
+.no-success-valid:focus:valid~.focus-border{
+    background-color: var(--primary-color) !important;
 }
 
 .login-form .login-button{

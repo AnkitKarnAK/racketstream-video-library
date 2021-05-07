@@ -53,9 +53,45 @@ export const AuthProvider = ({ children }) => {
     navigate("/products");
   };
 
+  const signupNewUser = async (email, password, name) => {
+    try {
+      const response = await axios.post(
+        "https://racketapi.herokuapp.com/users",
+        {
+          name: name,
+          email: email.toLowerCase(),
+          password: password,
+        }
+      );
+
+      if (response.status === 201) {
+        localStorage?.setItem(
+          "login",
+          JSON.stringify({
+            isUserLoggedIn: true,
+          })
+        );
+
+        setIsUserLogin(true);
+        setUsername(response.data.user.name);
+        setUserId(response.data.user._id);
+      }
+    } catch (err) {
+      console.log(err.response);
+      return err.response;
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ isUserLogin, loginUser, logoutUser, username, userId }}
+      value={{
+        isUserLogin,
+        loginUser,
+        logoutUser,
+        signupNewUser,
+        username,
+        userId,
+      }}
     >
       {children}
     </AuthContext.Provider>

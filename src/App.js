@@ -18,6 +18,7 @@ import Liked from "./components/pages/Liked";
 import WatchLater from "./components/pages/WatchLater";
 import PlayLists from "./components/pages/Playlists";
 import PlayList from "./components/pages/Playlist";
+import Signup from "./components/pages/Signup";
 
 function App() {
   const { dispatch } = useDataContext();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/playlists" element={<PlayLists />} />
         <Route path="/playlists/:playlistId" element={<PlayList />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Error404 />} />
 
         <PrivateRoute path="/profile" element={<Profile />} />
