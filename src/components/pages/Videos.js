@@ -17,11 +17,6 @@ const Videos = () => {
   const { state } = useDataContext();
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log("before state");
-  console.log("here is state: ", state);
-  console.log("before length");
-  console.log("videos length: ", state.videos.length);
-
   useEffect(() => {
     if (!state.videos.length) {
       setIsLoading(true);
