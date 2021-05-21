@@ -7,7 +7,10 @@ import { useDataContext } from "../context/data-context";
 import { isAlreadyAdded2 } from "../context/data-reducer";
 import { useAuthContext } from "../context/auth-context";
 import Loader from "react-loader-spinner";
-import { addOrRemoveVideoFromLikedVideos } from "../api/api-requests";
+import {
+  addOrRemoveVideoFromLikedVideos,
+  addOrRemoveVideoFromWatchLaterVideos,
+} from "../api/api-requests";
 
 export const WatchLaterItem = ({ watchLaterItem, onOptionClick }) => {
   const {
@@ -44,7 +47,20 @@ export const WatchLaterItem = ({ watchLaterItem, onOptionClick }) => {
                 : "card-badge-top-right"
             }
             onClick={() => {
-              dispatch({ type: "TOGGLE_WATCH_LATER", payload: watchLaterItem });
+              (async () => {
+                setIsLoading(true);
+                const { response } = await addOrRemoveVideoFromWatchLaterVideos(
+                  {
+                    userId,
+                    videoItem: watchLaterItem,
+                  }
+                );
+                dispatch({
+                  type: "GET_WATCH_LATER",
+                  payload: response.data.watchLater,
+                });
+                setIsLoading(false);
+              })();
             }}
           >
             {isAlreadyAdded2(watchLaterVideos, watchLaterItem._id) ? (

@@ -8,11 +8,14 @@ import { useDataContext } from "../context/data-context";
 import { isAlreadyAdded2 } from "../context/data-reducer";
 import { useAuthContext } from "../context/auth-context";
 import Loader from "react-loader-spinner";
-import { addOrRemoveVideoFromLikedVideos } from "../api/api-requests";
+import {
+  addOrRemoveVideoFromLikedVideos,
+  addOrRemoveVideoFromWatchLaterVideos,
+} from "../api/api-requests";
 
 export const LikedItem = ({ likedItem, onOptionClick }) => {
   const {
-    state: { likedVideos, watchLater },
+    state: { likedVideos, watchLaterVideos },
     dispatch,
   } = useDataContext();
 
@@ -38,15 +41,28 @@ export const LikedItem = ({ likedItem, onOptionClick }) => {
           </Link>
           <div
             className={
-              isAlreadyAdded2(watchLater, likedItem._id)
+              isAlreadyAdded2(watchLaterVideos, likedItem._id)
                 ? "card-badge-top-right in-watch-later"
                 : "card-badge-top-right"
             }
             onClick={() => {
-              dispatch({ type: "TOGGLE_WATCH_LATER", payload: likedItem });
+              (async () => {
+                setIsLoading(true);
+                const { response } = await addOrRemoveVideoFromWatchLaterVideos(
+                  {
+                    userId,
+                    videoItem: likedItem,
+                  }
+                );
+                dispatch({
+                  type: "GET_WATCH_LATER",
+                  payload: response.data.watchLater,
+                });
+                setIsLoading(false);
+              })();
             }}
           >
-            {isAlreadyAdded2(watchLater, likedItem._id) ? (
+            {isAlreadyAdded2(watchLaterVideos, likedItem._id) ? (
               <>
                 <AiOutlineFieldTime />
               </>
