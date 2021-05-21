@@ -40,6 +40,20 @@ html,body{
   transform: translate(-50%, -50%);
 }
 
+.position-bottom-left{
+  position: fixed;
+  top: 20%;
+  left: 95%;
+  transform: translate(-100%, -100%);
+  z-index: 5;
+}
+
+.loading-overlay{
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+
 /** NAVBAR CSS Starts**/
 
 .nav{
@@ -609,6 +623,7 @@ button.button-disabled{
 .cart-buttons{
    display: flex;
    width: 100%;
+   margin-bottom: 0.5rem;
 }
 .cart-buttons .cart-icon-button{
     cursor: pointer;
@@ -977,4 +992,14 @@ button.button-disabled{
         right: 20rem;
         padding: 1rem;
       }
+
+      .loading-overlay{
+        position: absolute;
+        top: 55%;
+        left: 45%;
+    }
+    .position-bottom-left{
+        top: 97%;
+        left: 5%;
+    }
 }

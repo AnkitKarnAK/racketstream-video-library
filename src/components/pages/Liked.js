@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDataContext } from "../../context/data-context";
-import { checkStatus } from "../../context/data-reducer";
 import { LikedEmpty } from "../LikedEmpty";
 import { LikedItem } from "../LikedItem";
 import { useModal } from "../../context/modal-context";
@@ -18,21 +17,17 @@ const Liked = () => {
     setModalData(videoObj);
     setModalVisibility(true);
   };
-
-  const likedActiveVideos = likedVideos.filter((video) =>
-    checkStatus(likedVideos, video._id)
-  );
-
+  console.log(likedVideos);
   return (
     <>
-      {likedActiveVideos.length ? (
+      {likedVideos?.length ? (
         <div className="liked-container">
           {isModalVisible && <SaveVideoModal {...modalData} />}
-          {likedActiveVideos.map((item) => {
+          {likedVideos.map((item) => {
             return (
               <LikedItem
                 key={item._id}
-                likedItem={item}
+                likedItem={item.videoId}
                 onOptionClick={handleOptionClick}
               />
             );

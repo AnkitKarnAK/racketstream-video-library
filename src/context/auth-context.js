@@ -18,6 +18,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loginStatus = JSON.parse(localStorage?.getItem("login"));
     loginStatus?.isUserLoggedIn && setIsUserLogin(true);
+    loginStatus?.username && setUsername(loginStatus.username);
+    loginStatus?.userId && setUserId(loginStatus.userId);
   }, []);
 
   const loginUser = async (email, password) => {
@@ -33,7 +35,11 @@ export const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         localStorage?.setItem(
           "login",
-          JSON.stringify({ isUserLoggedIn: true })
+          JSON.stringify({
+            isUserLoggedIn: true,
+            username: response.data.user.name,
+            userId: response.data.user._id,
+          })
         );
 
         setIsUserLogin(true);
@@ -69,6 +75,8 @@ export const AuthProvider = ({ children }) => {
           "login",
           JSON.stringify({
             isUserLoggedIn: true,
+            username: response.data.user.name,
+            userId: response.data.user._id,
           })
         );
 

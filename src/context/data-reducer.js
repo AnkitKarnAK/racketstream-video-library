@@ -8,12 +8,12 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, playlists: payload };
     }
 
-    case "SET_LIKED_VIDEOS": {
+    case "GET_LIKED_VIDEOS": {
       return { ...state, likedVideos: payload };
     }
 
-    case "SET_WATCH_LATER": {
-      return { ...state, watchLater: payload };
+    case "GET_WATCH_LATER": {
+      return { ...state, watchLaterVideos: payload };
     }
 
     case "TOGGLE_LIKE": {
@@ -114,6 +114,13 @@ export const dataReducer = (state, { type, payload }) => {
     default:
       return state;
   }
+};
+
+export const isAlreadyAdded2 = (itemsArray, id) => {
+  if (itemsArray) {
+    return itemsArray.find((item) => item.videoId._id === id);
+  }
+  return false;
 };
 
 export const isAlreadyAdded = (itemsArray, id) => {

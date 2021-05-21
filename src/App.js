@@ -19,9 +19,12 @@ import WatchLater from "./components/pages/WatchLater";
 import PlayLists from "./components/pages/Playlists";
 import PlayList from "./components/pages/Playlist";
 import Signup from "./components/pages/Signup";
+import { useAuthContext } from "./context/auth-context";
 
 function App() {
-  const { dispatch } = useDataContext();
+  const { state, dispatch } = useDataContext();
+  const { isUserLogin, userId } = useAuthContext();
+
   useEffect(() => {
     (async () => {
       try {
@@ -36,6 +39,40 @@ function App() {
       }
     })();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isUserLogin) {
+      (async () => {
+        try {
+          const { response } = await getVideosFromServer({
+            url: `https://racketapi.herokuapp.com/likedvideos/${userId}`,
+            requestType: "GET",
+          });
+
+          dispatch({
+            type: "GET_LIKED_VIDEOS",
+            payload: response.data.likedVideo,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+
+        try {
+          const { response } = await getVideosFromServer({
+            url: `https://racketapi.herokuapp.com/watchlaters/${userId}`,
+            requestType: "GET",
+          });
+
+          dispatch({
+            type: "GET_WATCH_LATER",
+            payload: response.data.watchLater,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    }
+  }, [isUserLogin, dispatch, userId]);
 
   return (
     <div className="App">

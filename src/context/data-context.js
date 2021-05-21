@@ -74,7 +74,7 @@ export const DataProvider = ({ children }) => {
       },
     ],
     videos: [],
-    watchLater: [],
+    watchLaterVideos: [],
     likedVideos: [],
   });
 

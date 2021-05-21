@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDataContext } from "../../context/data-context";
-import { checkStatus } from "../../context/data-reducer";
 import { WatchLaterEmpty } from "../WatchLaterEmpty";
 import { WatchLaterItem } from "../WatchLaterItem";
 import { useModal } from "../../context/modal-context";
@@ -8,12 +7,8 @@ import { SaveVideoModal } from "../SaveVideoModal";
 
 const WatchLater = () => {
   const {
-    state: { watchLater },
+    state: { watchLaterVideos },
   } = useDataContext();
-
-  const watchLaterActiveVideos = watchLater.filter((video) =>
-    checkStatus(watchLater, video._id)
-  );
 
   const [modalData, setModalData] = useState({});
   const { isModalVisible, setModalVisibility } = useModal();
@@ -25,14 +20,14 @@ const WatchLater = () => {
 
   return (
     <>
-      {watchLaterActiveVideos.length ? (
+      {watchLaterVideos?.length ? (
         <div className="watch-later-container">
           {isModalVisible && <SaveVideoModal {...modalData} />}
-          {watchLaterActiveVideos.map((item) => {
+          {watchLaterVideos.map((item) => {
             return (
               <WatchLaterItem
                 key={item._id}
-                watchLaterItem={item}
+                watchLaterItem={item.videoId}
                 onOptionClick={handleOptionClick}
               />
             );
