@@ -97,13 +97,13 @@ function App() {
         <Route path="/" element={<Videos />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<Video />} />
-        <Route path="/liked" element={<Liked />} />
-        <Route path="/watch-later" element={<WatchLater />} />
-        <Route path="/playlists" element={<PlayLists />} />
-        <Route path="/playlists/:playlistId" element={<PlayList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Error404 />} />
+        <PrivateRoute path="/liked" element={<Liked />} />
+        <PrivateRoute path="/watch-later" element={<WatchLater />} />
+        <PrivateRoute path="/playlists" element={<PlayLists />} />
+        <PrivateRoute path="/playlists/:playlistId" element={<PlayList />} />
 
         <PrivateRoute path="/profile" element={<Profile />} />
       </Routes>

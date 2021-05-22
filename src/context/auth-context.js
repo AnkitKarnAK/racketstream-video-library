@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   const logoutUser = () => {
     localStorage?.removeItem("login");
     setIsUserLogin(false);
-    navigate("/products");
+    navigate("/videos");
   };
 
   const signupNewUser = async (email, password, name) => {

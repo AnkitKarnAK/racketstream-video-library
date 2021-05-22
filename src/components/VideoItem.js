@@ -123,7 +123,12 @@ export const VideoItem = ({ videoItem, onOptionClick }) => {
                 <FaRegThumbsUp />
               )}
             </div>
-            <button className="button-primary" onClick={handleShowModal}>
+            <button
+              className="button-primary"
+              onClick={() => {
+                isUserLogin ? handleShowModal() : navigate("/login");
+              }}
+            >
               Add to Playlist
             </button>
           </div>
