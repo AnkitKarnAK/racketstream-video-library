@@ -85,9 +85,10 @@ export const SaveVideoModal = ({ videoItem }) => {
                         setIsLoading(false);
                       })();
                     }}
-                    checked={videos.some(
-                      (item) => item.videoId._id === videoItem._id
-                    )}
+                    checked={
+                      videos &&
+                      videos.some((item) => item.videoId._id === videoItem._id)
+                    }
                   />
                   <span>{name}</span>
                 </label>
