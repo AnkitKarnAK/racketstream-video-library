@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         setUserId(response.data.user._id);
       }
     } catch (err) {
-      console.log(err.response);
+      console.error(err.response);
       return err.response;
     }
   };

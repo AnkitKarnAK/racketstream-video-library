@@ -70,7 +70,6 @@ export const SaveVideoModal = ({ videoItem }) => {
                     onChange={() => {
                       (async () => {
                         setIsLoading(true);
-                        console.log(videoItem);
                         const { response } = await addOrRemoveVideoOnPlaylist({
                           userId,
                           playlistId: _id,

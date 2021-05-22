@@ -36,7 +36,6 @@ export const addOrRemoveVideoFromLikedVideos = async ({
         _id: videoItem._id,
       }
     );
-    console.log(res);
     if (res.status === 200 || res.status === 201) {
       return { response: res };
     }
