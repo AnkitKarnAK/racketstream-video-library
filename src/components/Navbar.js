@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import userLoginIcon from "../assests/user-login.svg";
 import profileIcon from "../assests/profile-icon.svg";
@@ -6,7 +6,7 @@ import profileIcon from "../assests/profile-icon.svg";
 import { useAuthContext } from "../context/auth-context";
 
 export const Navbar = () => {
-  const { isUserLogin, logoutUser } = useAuthContext();
+  const { isUserLogin } = useAuthContext();
 
   return (
     <>

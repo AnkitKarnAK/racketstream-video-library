@@ -37,7 +37,7 @@ const Playlist = () => {
         console.error(err);
       }
     })();
-  }, [dispatch]);
+  }, [dispatch, userId, playlistId]);
 
   return (
     <>
@@ -66,6 +66,7 @@ const Playlist = () => {
               <PlaylistVideoItem
                 key={videoItem._id}
                 playlistVideoItem={videoItem.videoId}
+                playlistId={playlistId}
               />
             ))}
           </div>

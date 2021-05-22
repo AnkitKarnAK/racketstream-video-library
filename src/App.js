@@ -25,7 +25,7 @@ import Signup from "./components/pages/Signup";
 import { useAuthContext } from "./context/auth-context";
 
 function App() {
-  const { state, dispatch } = useDataContext();
+  const { dispatch } = useDataContext();
   const { isUserLogin, userId } = useAuthContext();
 
   useEffect(() => {

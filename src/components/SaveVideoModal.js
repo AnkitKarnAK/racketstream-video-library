@@ -12,7 +12,6 @@ export const SaveVideoModal = ({ videoItem }) => {
   const { isModalVisible, setModalVisibility } = useModal();
   const [inputPlayListName, setInputPlayListName] = useState("");
   const {
-    state,
     state: { playlists },
     dispatch,
   } = useDataContext();

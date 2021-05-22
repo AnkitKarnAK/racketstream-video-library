@@ -11,9 +11,10 @@ import Loader from "react-loader-spinner";
 import {
   addOrRemoveVideoFromLikedVideos,
   addOrRemoveVideoFromWatchLaterVideos,
+  addOrRemoveVideoOnPlaylist,
 } from "../api/api-requests";
 
-export const PlaylistVideoItem = ({ playlistVideoItem }) => {
+export const PlaylistVideoItem = ({ playlistVideoItem, playlistId }) => {
   const {
     state: { likedVideos, watchLaterVideos },
     dispatch,
@@ -111,6 +112,29 @@ export const PlaylistVideoItem = ({ playlistVideoItem }) => {
                 <FaRegThumbsUp />
               )}
             </div>
+            <button
+              className="button-primary"
+              onClick={() => {
+                (async () => {
+                  setIsLoading(true);
+                  const { response } = await addOrRemoveVideoOnPlaylist({
+                    userId,
+                    playlistId: playlistId,
+                    videoId: playlistVideoItem._id,
+                  });
+                  dispatch({
+                    type: "GET_PLAYLIST_VIDEOS",
+                    payload: {
+                      playlistId: playlistId,
+                      videos: response.data.videos,
+                    },
+                  });
+                  setIsLoading(false);
+                })();
+              }}
+            >
+              Remove from Playlist
+            </button>
           </div>
         </div>
       </div>
