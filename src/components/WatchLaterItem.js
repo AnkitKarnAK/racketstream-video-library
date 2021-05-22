@@ -69,7 +69,7 @@ export const WatchLaterItem = ({ watchLaterItem, onOptionClick }) => {
               </span>
             ) : (
               <>
-                <span className="tooltiptext">Watch Later</span>
+                <span className="tool-tip-text">Watch Later</span>
                 <BiTimeFive />
               </>
             )}
@@ -85,7 +85,7 @@ export const WatchLaterItem = ({ watchLaterItem, onOptionClick }) => {
               <span className="card-content-title">
                 {watchLaterItem.channelName}
               </span>
-              <div> Subscibers: {watchLaterItem.channelSubscribers}</div>
+              <div> Subscribers: {watchLaterItem.channelSubscribers}</div>
               <div>
                 Views:{" "}
                 <span style={{ color: "#878787" }}>

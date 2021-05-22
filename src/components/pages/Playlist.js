@@ -47,7 +47,7 @@ const Playlist = () => {
         </div>
       ) : (
         <>
-          <div className="playlisted-videos-conatiner">
+          <div className="playlisted-videos-container">
             <div className="playlist-bar">
               <div className="playlist-title">
                 <strong>test</strong>

@@ -63,7 +63,7 @@ export const PlaylistVideoItem = ({ playlistVideoItem, playlistId }) => {
               </>
             ) : (
               <>
-                <span className="tooltiptext">Watch Later</span>
+                <span className="tool-tip-text">Watch Later</span>
                 <BiTimeFive />
               </>
             )}
@@ -79,7 +79,7 @@ export const PlaylistVideoItem = ({ playlistVideoItem, playlistId }) => {
               <span className="card-content-title">
                 {playlistVideoItem.channelName}
               </span>
-              <div> Subscibers: {playlistVideoItem.channelSubscribers}</div>
+              <div> Subscribers: {playlistVideoItem.channelSubscribers}</div>
               <div>
                 Views:{" "}
                 <span style={{ color: "#878787" }}>

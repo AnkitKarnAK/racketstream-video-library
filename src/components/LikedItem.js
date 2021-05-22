@@ -68,7 +68,7 @@ export const LikedItem = ({ likedItem, onOptionClick }) => {
               </>
             ) : (
               <>
-                <span className="tooltiptext">Watch Later</span>
+                <span className="tool-tip-text">Watch Later</span>
                 <BiTimeFive />
               </>
             )}
@@ -84,7 +84,7 @@ export const LikedItem = ({ likedItem, onOptionClick }) => {
               <span className="card-content-title">
                 {likedItem.channelName}
               </span>
-              <div> Subscibers: {likedItem.channelSubscribers}</div>
+              <div> Subscribers: {likedItem.channelSubscribers}</div>
               <div>
                 Views:{" "}
                 <span style={{ color: "#878787" }}>{likedItem.viewCount}</span>

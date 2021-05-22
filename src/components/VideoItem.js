@@ -69,7 +69,7 @@ export const VideoItem = ({ videoItem, onOptionClick }) => {
               </>
             ) : (
               <>
-                <span className="tooltiptext">Watch Later</span>
+                <span className="tool-tip-text">Watch Later</span>
                 <BiTimeFive />
               </>
             )}

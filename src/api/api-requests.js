@@ -42,7 +42,7 @@ export const addOrRemoveVideoFromLikedVideos = async ({
     }
   } catch (err) {
     console.error(
-      "error occured while adding or removing video from liked videos",
+      "error occurred while adding or removing video from liked videos",
       err
     );
   }
@@ -64,7 +64,7 @@ export const addOrRemoveVideoFromWatchLaterVideos = async ({
     }
   } catch (err) {
     console.error(
-      "error occured while adding or removing video from watch later",
+      "error occurred while adding or removing video from watch later",
       err
     );
   }
@@ -79,7 +79,7 @@ export const getUserPlaylistsFromServer = async ({ userId }) => {
       return { response: res };
     }
   } catch (err) {
-    console.error("error occured while retrieving user playlists", err);
+    console.error("error occurred while retrieving user playlists", err);
   }
 };
 
@@ -95,7 +95,7 @@ export const createUserPlaylistOnServer = async ({ userId, playlistName }) => {
       return { response: res };
     }
   } catch (err) {
-    console.error("error occured while creating user playlist", err);
+    console.error("error occurred while creating user playlist", err);
   }
 };
 
@@ -108,7 +108,7 @@ export const removeUserPlaylistOnServer = async ({ userId, playlistId }) => {
       return { response: res };
     }
   } catch (err) {
-    console.error("error occured while removing user playlist", err);
+    console.error("error occurred while removing user playlist", err);
   }
 };
 
@@ -121,7 +121,7 @@ export const getPlaylistVideosFromServer = async ({ userId, playlistId }) => {
       return { response: res };
     }
   } catch (err) {
-    console.error("error occured while retrieving user playlists", err);
+    console.error("error occurred while retrieving user playlists", err);
   }
 };
 
@@ -142,7 +142,7 @@ export const addOrRemoveVideoOnPlaylist = async ({
     }
   } catch (err) {
     console.error(
-      "error occured while adding or removing video from liked videos",
+      "error occurred while adding or removing video from liked videos",
       err
     );
   }
