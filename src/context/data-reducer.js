@@ -4,8 +4,23 @@ export const dataReducer = (state, { type, payload }) => {
       return { ...state, videos: payload };
     }
 
-    case "SET_PLAYLISTS": {
+    case "GET_PLAYLISTS": {
       return { ...state, playlists: payload };
+    }
+
+    case "GET_PLAYLIST_VIDEOS": {
+      return {
+        ...state,
+        playlists: state.playlists.map((playlistItem) => {
+          if (playlistItem._id === payload.playlistId) {
+            return {
+              ...playlistItem,
+              videos: [...payload.videos],
+            };
+          }
+          return playlistItem;
+        }),
+      };
     }
 
     case "GET_LIKED_VIDEOS": {
@@ -74,16 +89,6 @@ export const dataReducer = (state, { type, payload }) => {
         ...state,
         playlists: state.playlists.map((playlist) => {
           if (playlist.playlistId === payload.playlistId) {
-            if (
-              playlist.videos.some(
-                (item) => item.videoId === payload.videoItem.videoId
-              )
-            ) {
-              const videos = playlist.videos.filter(
-                (item) => item.videoId !== payload.videoItem.videoId
-              );
-              return { ...playlist, videos };
-            }
             return {
               ...playlist,
               videos: [...playlist.videos, { ...payload.videoItem }],

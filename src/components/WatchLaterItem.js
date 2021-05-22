@@ -24,7 +24,7 @@ export const WatchLaterItem = ({ watchLaterItem, onOptionClick }) => {
   const handleShowModal = () => {
     if (typeof onOptionClick === "function")
       onOptionClick({
-        videoItem: { watchLaterItem },
+        videoItem: watchLaterItem,
         onOptionClick,
       });
   };

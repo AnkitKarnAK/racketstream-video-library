@@ -17,7 +17,7 @@ const Liked = () => {
     setModalData(videoObj);
     setModalVisibility(true);
   };
-  console.log(likedVideos);
+
   return (
     <>
       {likedVideos?.length ? (

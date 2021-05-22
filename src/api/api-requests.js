@@ -69,3 +69,81 @@ export const addOrRemoveVideoFromWatchLaterVideos = async ({
     );
   }
 };
+
+export const getUserPlaylistsFromServer = async ({ userId }) => {
+  try {
+    const res = await axios.get(
+      `https://racketapi.herokuapp.com/playlists/${userId}`
+    );
+    if (res.status === 200 || res.status === 201) {
+      return { response: res };
+    }
+  } catch (err) {
+    console.error("error occured while retrieving user playlists", err);
+  }
+};
+
+export const createUserPlaylistOnServer = async ({ userId, playlistName }) => {
+  try {
+    const res = await axios.post(
+      `https://racketapi.herokuapp.com/playlists/${userId}`,
+      {
+        name: playlistName,
+      }
+    );
+    if (res.status === 200 || res.status === 201) {
+      return { response: res };
+    }
+  } catch (err) {
+    console.error("error occured while creating user playlist", err);
+  }
+};
+
+export const removeUserPlaylistOnServer = async ({ userId, playlistId }) => {
+  try {
+    const res = await axios.delete(
+      `https://racketapi.herokuapp.com/playlists/${userId}/${playlistId}`
+    );
+    if (res.data.success) {
+      return { response: res };
+    }
+  } catch (err) {
+    console.error("error occured while removing user playlist", err);
+  }
+};
+
+export const getPlaylistVideosFromServer = async ({ userId, playlistId }) => {
+  try {
+    const res = await axios.get(
+      `https://racketapi.herokuapp.com/playlists/${userId}/${playlistId}`
+    );
+    if (res.status === 200 || res.status === 201) {
+      return { response: res };
+    }
+  } catch (err) {
+    console.error("error occured while retrieving user playlists", err);
+  }
+};
+
+export const addOrRemoveVideoOnPlaylist = async ({
+  userId,
+  videoId,
+  playlistId,
+}) => {
+  try {
+    const res = await axios.post(
+      `https://racketapi.herokuapp.com/playlists/${userId}/${playlistId}`,
+      {
+        _id: videoId,
+      }
+    );
+    if (res.status === 200 || res.status === 201) {
+      return { response: res };
+    }
+  } catch (err) {
+    console.error(
+      "error occured while adding or removing video from liked videos",
+      err
+    );
+  }
+};

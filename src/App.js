@@ -7,7 +7,10 @@ import { Sidebar } from "./components/Sidebar";
 import { FooterForMobileScreens } from "./components/FooterForMobileScreens";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { useDataContext } from "./context/data-context";
-import { getVideosFromServer } from "./api/api-requests";
+import {
+  getUserPlaylistsFromServer,
+  getVideosFromServer,
+} from "./api/api-requests";
 
 import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/Login";
@@ -66,6 +69,17 @@ function App() {
           dispatch({
             type: "GET_WATCH_LATER",
             payload: response.data.watchLater,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+
+        try {
+          const { response } = await getUserPlaylistsFromServer({ userId });
+
+          dispatch({
+            type: "GET_PLAYLISTS",
+            payload: response.data.playlists,
           });
         } catch (error) {
           console.error(error);

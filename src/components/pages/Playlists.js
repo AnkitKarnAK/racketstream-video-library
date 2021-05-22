@@ -12,8 +12,8 @@ const PlayLists = () => {
         <strong>Playlists</strong>
       </div>
       {playlists.length > 0 ? (
-        playlists.map(({ playlistId, name }) => (
-          <PlaylistItem key={playlistId} playlistId={playlistId} name={name} />
+        playlists.map((item) => (
+          <PlaylistItem key={item._id} playlistItem={item} />
         ))
       ) : (
         <>

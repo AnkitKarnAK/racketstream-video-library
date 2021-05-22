@@ -25,7 +25,7 @@ export const LikedItem = ({ likedItem, onOptionClick }) => {
   const handleShowModal = () => {
     if (typeof onOptionClick === "function")
       onOptionClick({
-        videoItem: { likedItem },
+        videoItem: likedItem,
         onOptionClick,
       });
   };

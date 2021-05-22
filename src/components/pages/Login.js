@@ -24,7 +24,7 @@ const Login = () => {
       setLoading(false);
       return;
     }
-    navigate(state?.from ? state.from : "/products");
+    navigate(state?.from ? state.from : "/videos");
   };
 
   return (

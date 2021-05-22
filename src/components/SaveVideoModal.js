@@ -1,14 +1,24 @@
 import { useState } from "react";
+import {
+  addOrRemoveVideoOnPlaylist,
+  createUserPlaylistOnServer,
+} from "../api/api-requests";
+import { useAuthContext } from "../context/auth-context";
 import { useDataContext } from "../context/data-context";
 import { useModal } from "../context/modal-context";
+import Loader from "react-loader-spinner";
 
 export const SaveVideoModal = ({ videoItem }) => {
   const { isModalVisible, setModalVisibility } = useModal();
   const [inputPlayListName, setInputPlayListName] = useState("");
   const {
+    state,
     state: { playlists },
     dispatch,
   } = useDataContext();
+
+  const { userId } = useAuthContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
@@ -33,34 +43,52 @@ export const SaveVideoModal = ({ videoItem }) => {
               <button
                 className="button-primary modal-button"
                 disabled={inputPlayListName === "" ? true : false}
-                onClick={() =>
-                  dispatch({
-                    type: "CREATE_PLAYLIST",
-                    payload: { inputPlayListName, setInputPlayListName },
-                  })
-                }
+                onClick={() => {
+                  (async () => {
+                    setIsLoading(true);
+                    const { response } = await createUserPlaylistOnServer({
+                      userId,
+                      playlistName: inputPlayListName,
+                    });
+                    dispatch({
+                      type: "GET_PLAYLISTS",
+                      payload: response.data.playlists,
+                    });
+                    setIsLoading(false);
+                  })();
+                }}
               >
                 Create
               </button>
             </form>
           </div>
           <div className="playlist-names">
-            {playlists.map(({ playlistId, name, videos }) => (
-              <div key={playlistId}>
+            {playlists.map(({ _id, name, videos }) => (
+              <div key={_id}>
                 <label>
                   <input
                     type="checkbox"
-                    onChange={() =>
-                      dispatch({
-                        type: "ADD_TO_PLAYLIST",
-                        payload: {
-                          playlistId,
-                          videoItem,
-                        },
-                      })
-                    }
+                    onChange={() => {
+                      (async () => {
+                        setIsLoading(true);
+                        console.log(videoItem);
+                        const { response } = await addOrRemoveVideoOnPlaylist({
+                          userId,
+                          playlistId: _id,
+                          videoId: videoItem._id,
+                        });
+                        dispatch({
+                          type: "GET_PLAYLIST_VIDEOS",
+                          payload: {
+                            playlistId: _id,
+                            videos: response.data.videos,
+                          },
+                        });
+                        setIsLoading(false);
+                      })();
+                    }}
                     checked={videos.some(
-                      (item) => item.videoId === videoItem.videoId
+                      (item) => item.videoId._id === videoItem._id
                     )}
                   />
                   <span>{name}</span>
@@ -77,6 +105,11 @@ export const SaveVideoModal = ({ videoItem }) => {
           </div>
         </div>
       </div>
+      {isLoading && (
+        <div className="position-bottom-left">
+          <Loader type="Oval" color="#2874f0" height={50} width={50} />
+        </div>
+      )}
     </>
   );
 };

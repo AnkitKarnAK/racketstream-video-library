@@ -3,24 +3,41 @@ import { useParams } from "react-router";
 import { useDataContext } from "../../context/data-context";
 import { PlaylistVideoItem } from "../PlaylistVideoItem";
 import Loader from "react-loader-spinner";
+import { getPlaylistVideosFromServer } from "../../api/api-requests";
+import { useAuthContext } from "../../context/auth-context";
 
 const Playlist = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { userId } = useAuthContext();
+  const { dispatch } = useDataContext();
 
   const {
-    state,
     state: { playlists },
   } = useDataContext();
 
   const { playlistId } = useParams();
-  const playlist = playlists.find((item) => item.playlistId === playlistId);
+  const playlist = playlists.find((item) => item._id === playlistId);
 
   useEffect(() => {
-    setIsLoading(true);
-    if (state.playlists[0].videos.length) {
-      setIsLoading(false);
-    }
-  }, [state.playlists]);
+    (async () => {
+      setIsLoading(true);
+      try {
+        const { response } = await getPlaylistVideosFromServer({
+          userId,
+          playlistId,
+        });
+
+        dispatch({
+          type: "GET_PLAYLIST_VIDEOS",
+          payload: { playlistId: playlistId, videos: response.data.videos },
+        });
+        setIsLoading(false);
+      } catch (err) {
+        alert("failed to fetch playlist videos ", err);
+        console.error(err);
+      }
+    })();
+  }, [dispatch]);
 
   return (
     <>
@@ -33,8 +50,8 @@ const Playlist = () => {
           <div className="playlisted-videos-conatiner">
             <div className="playlist-bar">
               <div className="playlist-title">
-                <strong>{playlist.name}</strong>
-                {playlist.videos.length > 0 ? (
+                <strong>test</strong>
+                {playlist?.videos.length > 0 ? (
                   <div className="playlist-video-count info__grey">
                     {playlist.videos.length}{" "}
                     {playlist.videos.length > 1 ? "videos" : "video"}
@@ -45,10 +62,10 @@ const Playlist = () => {
               </div>
             </div>
 
-            {playlist.videos.map((videoItem) => (
+            {playlist?.videos.map((videoItem) => (
               <PlaylistVideoItem
-                key={videoItem.videoId}
-                playlistVideoItem={videoItem}
+                key={videoItem._id}
+                playlistVideoItem={videoItem.videoId}
               />
             ))}
           </div>
