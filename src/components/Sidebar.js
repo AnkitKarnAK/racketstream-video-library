@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { FaHome, FaThumbsUp } from "react-icons/fa";
 import { RiPlayListLine } from "react-icons/ri";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import { MdVideoLibrary } from "react-icons/md";
 
 export const Sidebar = () => {
   return (
@@ -47,16 +46,6 @@ export const Sidebar = () => {
           <li>
             <RiPlayListLine />
             <span className="link-name">Playlists</span>
-          </li>
-        </NavLink>
-        <NavLink
-          to="/library"
-          className="secondary-color"
-          activeClassName="primary-color"
-        >
-          <li>
-            <MdVideoLibrary />
-            <span className="link-name">Library</span>
           </li>
         </NavLink>
       </ul>

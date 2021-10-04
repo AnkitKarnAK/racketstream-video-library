@@ -27,6 +27,19 @@ const Login = () => {
     navigate(state?.from ? state.from : "/videos");
   };
 
+  const guestLoginHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const res = await loginUser("admin@gmail.com", "Admin123");
+    if (res?.status === 401 || res?.status === 500) {
+      setError(res?.data?.message || "Something went wrong, please try again!");
+      setLoading(false);
+      return;
+    }
+    navigate(state?.from ? state.from : "/videos");
+  };
+
   return (
     <>
       <div className="login-container">
@@ -65,7 +78,13 @@ const Login = () => {
           </div>
 
           <button className="button-primary login-button" type="submit">
-            LOGIN
+            Login
+          </button>
+          <button
+            className="button-primary login-button"
+            onClick={guestLoginHandler}
+          >
+            Guest Login
           </button>
 
           <div

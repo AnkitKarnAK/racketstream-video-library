@@ -16,18 +16,6 @@ export const Navbar = () => {
           <span className="nav-header-primary">Stream</span>
         </NavLink>
         <div className="nav-links">
-          <div className="button-badge-container display-toggle">
-            <button className="nav-button">
-              <NavLink
-                to="/videos"
-                className="nav-icon-container"
-                activeClassName="nav-link-active"
-              >
-                <img src={profileIcon} alt="Videos" className="nav-icons" />
-                Videos
-              </NavLink>
-            </button>
-          </div>
           {isUserLogin ? (
             <>
               <div className="button-badge-container">
