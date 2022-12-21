@@ -23,7 +23,7 @@ const Video = () => {
     (async () => {
       setIsLoading(true);
       const { response } = await getVideoFromServer(
-        `https://racketapi.herokuapp.com/videos/${videoId}`
+        `https://racketapi.up.railway.app/videos/${videoId}`
       );
       if (response?.data.success) {
         setIsLoading(false);

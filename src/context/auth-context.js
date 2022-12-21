@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async (email, password) => {
     try {
       const response = await axios.post(
-        "https://racketapi.herokuapp.com/users/login",
+        "https://racketapi.up.railway.app/users/login",
         {
           email: email.toLowerCase(),
           password: password,
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
   const signupNewUser = async (email, password, name) => {
     try {
       const response = await axios.post(
-        "https://racketapi.herokuapp.com/users",
+        "https://racketapi.up.railway.app/users",
         {
           name: name,
           email: email.toLowerCase(),

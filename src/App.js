@@ -32,7 +32,7 @@ function App() {
     (async () => {
       try {
         const { response } = await getVideosFromServer({
-          url: "https://racketapi.herokuapp.com/videos",
+          url: "https://racketapi.up.railway.app/videos",
           requestType: "GET",
         });
         dispatch({ type: "SET_VIDEOS", payload: response.data.videos });
@@ -48,7 +48,7 @@ function App() {
       (async () => {
         try {
           const { response } = await getVideosFromServer({
-            url: `https://racketapi.herokuapp.com/likedvideos/${userId}`,
+            url: `https://racketapi.up.railway.app/likedvideos/${userId}`,
             requestType: "GET",
           });
 
@@ -62,7 +62,7 @@ function App() {
 
         try {
           const { response } = await getVideosFromServer({
-            url: `https://racketapi.herokuapp.com/watchlaters/${userId}`,
+            url: `https://racketapi.up.railway.app/watchlaters/${userId}`,
             requestType: "GET",
           });
 
