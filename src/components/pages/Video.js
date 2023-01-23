@@ -23,7 +23,7 @@ const Video = () => {
     (async () => {
       setIsLoading(true);
       const { response } = await getVideoFromServer(
-        `https://racketapi.up.railway.app/videos/${videoId}`
+        `https://racketapi.onrender.com/videos/${videoId}`
       );
       if (response?.data.success) {
         setIsLoading(false);

@@ -31,7 +31,7 @@ export const addOrRemoveVideoFromLikedVideos = async ({
 }) => {
   try {
     const res = await axios.post(
-      `https://racketapi.up.railway.app/likedvideos/${userId}`,
+      `https://racketapi.onrender.com/likedvideos/${userId}`,
       {
         _id: videoItem._id,
       }
@@ -53,7 +53,7 @@ export const addOrRemoveVideoFromWatchLaterVideos = async ({
 }) => {
   try {
     const res = await axios.post(
-      `https://racketapi.up.railway.app/watchlaters/${userId}`,
+      `https://racketapi.onrender.com/watchlaters/${userId}`,
       {
         _id: videoItem._id,
       }
@@ -72,7 +72,7 @@ export const addOrRemoveVideoFromWatchLaterVideos = async ({
 export const getUserPlaylistsFromServer = async ({ userId }) => {
   try {
     const res = await axios.get(
-      `https://racketapi.up.railway.app/playlists/${userId}`
+      `https://racketapi.onrender.com/playlists/${userId}`
     );
     if (res.status === 200 || res.status === 201) {
       return { response: res };
@@ -85,7 +85,7 @@ export const getUserPlaylistsFromServer = async ({ userId }) => {
 export const createUserPlaylistOnServer = async ({ userId, playlistName }) => {
   try {
     const res = await axios.post(
-      `https://racketapi.up.railway.app/playlists/${userId}`,
+      `https://racketapi.onrender.com/playlists/${userId}`,
       {
         name: playlistName,
       }
@@ -101,7 +101,7 @@ export const createUserPlaylistOnServer = async ({ userId, playlistName }) => {
 export const removeUserPlaylistOnServer = async ({ userId, playlistId }) => {
   try {
     const res = await axios.delete(
-      `https://racketapi.up.railway.app/playlists/${userId}/${playlistId}`
+      `https://racketapi.onrender.com/playlists/${userId}/${playlistId}`
     );
     if (res.data.success) {
       return { response: res };
@@ -114,7 +114,7 @@ export const removeUserPlaylistOnServer = async ({ userId, playlistId }) => {
 export const getPlaylistVideosFromServer = async ({ userId, playlistId }) => {
   try {
     const res = await axios.get(
-      `https://racketapi.up.railway.app/playlists/${userId}/${playlistId}`
+      `https://racketapi.onrender.com/playlists/${userId}/${playlistId}`
     );
     if (res.status === 200 || res.status === 201) {
       return { response: res };
@@ -131,7 +131,7 @@ export const addOrRemoveVideoOnPlaylist = async ({
 }) => {
   try {
     const res = await axios.post(
-      `https://racketapi.up.railway.app/playlists/${userId}/${playlistId}`,
+      `https://racketapi.onrender.com/playlists/${userId}/${playlistId}`,
       {
         _id: videoId,
       }
